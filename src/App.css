@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+}
+
+.app { width: 100%; max-width: 900px; }
+
+.card {
+  background: white;
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   color: white;
+  text-align: center;
+  padding: 50px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.header h1 { font-size: 3.2rem; font-weight: 900; }
+.header p { font-size: 1.3rem; }
+
+.error {
+  background: #ff4757;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mic-section { padding: 40px 30px; text-align: center; }
+
+.detected-lang {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #4facfe;
+  font-weight: bold;
+  background: rgba(79,172,254,0.1);
+  padding: 12px 24px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.mic-btn {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  font-size: 60px;
+  cursor: pointer;
+  background: #2ed573;
+  color: white;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.mic-btn.listening {
+  background: #ff4757;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,71,87,0.7); }
+  70% { box-shadow: 0 0 0 40px rgba(255,71,87,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,71,87,0); }
+}
+
+.wave-container {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 25px 0;
+  height: 70px;
+  align-items: flex-end;
+}
+
+.wave {
+  width: 7px;
+  background: linear-gradient(to top, #4facfe, #00f2fe);
+  border-radius: 10px;
+  min-height: 10px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+.status { font-size: 1.6rem; font-weight: bold; margin-top: 20px; }
+
+.transcript-box {
+  margin: 30px;
+  padding: 35px;
+  background: #f8f9fa;
+  border: 3px dashed #adb5bd;
+  border-radius: 24px;
+  min-height: 280px;
+  font-size: 1.4rem;
+  line-height: 1.9;
+}
+
+.stats { margin-bottom: 15px; color: #636e72; font-weight: 600; }
+
+.interim { color: #74b9ff; font-style: italic; }
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 30px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.btn.clear { background: #ff6b6b; color: white; }
+.btn.copy { background: #ffa502; color: white; }
+.btn.txt { background: #51cf66; color: white; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 2.5rem; }
+  .mic-btn { width: 120px; height: 120px; font-size: 50px; }
 }

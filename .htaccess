@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Remove trailing slash if not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+# Redirect index.html to root URL
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Redirect URLs with .html to URLs without .html
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Internally rewrite URLs without .html to .html files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.html [L]
+
+
+Redirect /Order  https://cc795b2xgeipsbxd97h9scpwbc.hop.clickbank.net
